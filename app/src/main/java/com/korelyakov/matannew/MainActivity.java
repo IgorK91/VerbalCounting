@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     int b;
     int c;
     int d;
+    int countLvl;
     TextView b1, b2,b3;
     EditText a1;
     int countT = 0;
@@ -36,8 +37,11 @@ public class MainActivity extends AppCompatActivity {
             decorView.setSystemUiVisibility(uiOptions);
         }
 
-        a = (int) (Math.random()*10);
-        b = (int) (Math.random()*10);
+
+        Bundle arguments = getIntent().getExtras();
+        a = (int) arguments.get("num1");
+        b = (int) arguments.get("num2");
+        countLvl = (int) arguments.get("num3");
         c = a+b;
 
         b1 = findViewById(R.id.b1);
@@ -46,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         a1 = findViewById(R.id.a1);
 
         b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
-
-        //     d = Integer.parseInt(a1.getText().toString());
 
     }
 
@@ -106,27 +108,80 @@ public class MainActivity extends AppCompatActivity {
                b3.setText("Ошибок = " + Integer.toString(countF));
                a1.setText(null);
            }
-        a = (int) (Math.random()*10);
-        b = (int) (Math.random()*10);
-        c = a+b;
-        b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
-        if(countT >= 5){
-            a = 10 + (int) (Math.random()*90);
-            b = 10 + (int) (Math.random()*90);
-            c = a+b;
+
+           if (countLvl == 0) {
+               a = (int) (Math.random() * 10);
+               b = (int) (Math.random() * 10);
+               c = a + b;
+               b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
+               if (countT >= 5) {
+                   a = 10 + (int) (Math.random() * 90);
+                   b = 10 + (int) (Math.random() * 90);
+                   c = a + b;
+                   b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
+               }
+               if (countT >= 10) {
+                   a = 100 + (int) (Math.random() * 900);
+                   b = 100 + (int) (Math.random() * 900);
+                   c = a + b;
+                   b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
+               }
+               if (countT == 15) {
+                   ShowWin();
+               }
+               if (countF >= 3) {
+                   ShowOver();
+               }
+           }
+
+        if (countLvl == 1) {
+            a = 10 + (int) (Math.random() * 90);
+            b = 10 + (int) (Math.random() * 90);
+            c = a + b;
             b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
+            if (countT >= 4) {
+                a = 100 + (int) (Math.random() * 900);
+                b = 100 + (int) (Math.random() * 900);
+                c = a + b;
+                b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
+            }
+            if (countT >= 7) {
+                a = 1000 + (int) (Math.random() * 9000);
+                b = 1000 + (int) (Math.random() * 9000);
+                c = a + b;
+                b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
+            }
+            if (countT == 9) {
+                ShowWin();
+            }
+            if (countF >= 3) {
+                ShowOver();
+            }
         }
-        if(countT >= 10){
-            a = 100 + (int) (Math.random()*900);
-            b = 100 + (int) (Math.random()*900);
-            c = a+b;
+
+        if (countLvl == 2) {
+            a = 100 + (int) (Math.random() * 900);
+            b = 100 + (int) (Math.random() * 900);
+            c = a + b;
             b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
-        }
-        if(countT == 15){
-        ShowWin();
-        }
-        if (countF >= 3){
-         ShowOver();
+            if (countT >= 3) {
+                a = 1000 + (int) (Math.random() * 9000);
+                b = 1000 + (int) (Math.random() * 9000);
+                c = a + b;
+                b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
+            }
+            if (countT >= 5) {
+                a = 10000 + (int) (Math.random() * 90000);
+                b = 10000 + (int) (Math.random() * 90000);
+                c = a + b;
+                b1.setText(Integer.toString(a) + " + " + Integer.toString(b) + " = ?");
+            }
+            if (countT == 6) {
+                ShowWin();
+            }
+            if (countF >= 3) {
+                ShowOver();
+            }
         }
     }
 }
