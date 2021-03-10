@@ -12,6 +12,7 @@ public class MainActivity3 extends AppCompatActivity {
     int a;
     int b;
     int countLvl;
+    String operation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class MainActivity3 extends AppCompatActivity {
         button2.setBackgroundColor(Color.WHITE);
         button3.setBackgroundColor(Color.WHITE);
         a = (int) (Math.random()*10);
-        b = (int) (Math.random()*10);
+        b = (int) (1 + (Math.random()*9));
         countLvl = 0;
     }
 
@@ -55,11 +56,60 @@ public class MainActivity3 extends AppCompatActivity {
         countLvl = 2;
     }
 
+    public void Plus (View view) {
+        Button button5 = findViewById(R.id.button5);
+        Button button6 = findViewById(R.id.button6);
+        Button button7 = findViewById(R.id.button7);
+        Button button8 = findViewById(R.id.button8);
+        button5.setBackgroundColor(Color.BLUE);
+        button6.setBackgroundColor(Color.WHITE);
+        button7.setBackgroundColor(Color.WHITE);
+        button8.setBackgroundColor(Color.WHITE);
+        operation = " + ";
+    }
+
+    public void Minus (View view) {
+        Button button5 = findViewById(R.id.button5);
+        Button button6 = findViewById(R.id.button6);
+        Button button7 = findViewById(R.id.button7);
+        Button button8 = findViewById(R.id.button8);
+        button5.setBackgroundColor(Color.WHITE);
+        button6.setBackgroundColor(Color.BLUE);
+        button7.setBackgroundColor(Color.WHITE);
+        button8.setBackgroundColor(Color.WHITE);
+        operation = " - ";
+    }
+
+    public void Del (View view) {
+        Button button5 = findViewById(R.id.button5);
+        Button button6 = findViewById(R.id.button6);
+        Button button7 = findViewById(R.id.button7);
+        Button button8 = findViewById(R.id.button8);
+        button5.setBackgroundColor(Color.WHITE);
+        button6.setBackgroundColor(Color.WHITE);
+        button7.setBackgroundColor(Color.BLUE);
+        button8.setBackgroundColor(Color.WHITE);
+        operation = " / ";
+    }
+
+    public void Umn (View view) {
+        Button button5 = findViewById(R.id.button5);
+        Button button6 = findViewById(R.id.button6);
+        Button button7 = findViewById(R.id.button7);
+        Button button8 = findViewById(R.id.button8);
+        button5.setBackgroundColor(Color.WHITE);
+        button6.setBackgroundColor(Color.WHITE);
+        button7.setBackgroundColor(Color.WHITE);
+        button8.setBackgroundColor(Color.BLUE);
+        operation = " * ";
+    }
+
     public void Start(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("num1", a);
         intent.putExtra("num2", b);
         intent.putExtra("num3", countLvl);
+        intent.putExtra("num4", operation);
         startActivity(intent);
         finish();
     }
